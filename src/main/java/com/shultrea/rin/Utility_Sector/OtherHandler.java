@@ -6,8 +6,7 @@ import com.shultrea.rin.Prop_Sector.ArrowPropertiesProvider;
 import com.shultrea.rin.Prop_Sector.IArrowProperties;
 import com.shultrea.rin.Prop_Sector.PlayerPropertiesProvider;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
-import com.shultrea.rin.registry.Smc_030;
-import com.shultrea.rin.registry.Smc_040;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -43,8 +42,8 @@ public class OtherHandler {
 				if(!arrow.hasCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null)) return;
 				IArrowProperties properties = arrow.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
 				int p = ModConfig.enabled.supremeFlame ?
-						EnchantmentHelper.getEnchantmentLevel(Smc_040.supremeflame, bow) : 0;
-				int l = ModConfig.enabled.strafe ? EnchantmentHelper.getEnchantmentLevel(Smc_030.Strafe, bow) : 0;
+						EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.supremeFlame, bow) : 0;
+				int l = ModConfig.enabled.strafe ? EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.strafe, bow) : 0;
 				if(Math.random() < 0.125f * l && l > 0) properties.setArrowRapidDamage(true);
 				//int pAlt =
 				if(p > 0) {
@@ -52,18 +51,18 @@ public class OtherHandler {
 					arrow.setFire(400);
 				}
 				int s = ModConfig.enabled.advancedFlame ?
-						EnchantmentHelper.getEnchantmentLevel(Smc_040.advancedflame, bow) : 0;
+						EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.advancedFlame, bow) : 0;
 				if(s > 0) {
 					properties.setFlameLevel(2);
 					arrow.setFire(200);
 				}
 				int t = ModConfig.enabled.lesserFlame ?
-						EnchantmentHelper.getEnchantmentLevel(Smc_040.lesserflame, bow) : 0;
+						EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.lesserFlame, bow) : 0;
 				if(t > 0) {
 					properties.setFlameLevel(1);
 					//arrow.setFire(50); //Overrides the 2 seconds with 5 seconds
 				}
-				//int j = EnchantmentHelper.getMaxEnchantmentLevel(Smc_030.ExtremePunch, shooter);
+				//int j = EnchantmentHelper.getMaxEnchantmentLevel(EnchantmentRegistry.ExtremePunch, shooter);
 			}
 		}
 	}
@@ -77,21 +76,21 @@ public class OtherHandler {
 		if(attacker == null) return;
 		ItemStack dmgSource = ((EntityLivingBase)fEvent.getSource().getTrueSource()).getHeldItemMainhand();
 		if(dmgSource == null) return;
-		if(EnchantmentBase.isOffensivePetDisallowed(fEvent.getSource().getImmediateSource(), fEvent.getSource().getTrueSource()))
+		if(!EnchantmentBase.isDamageSourceAllowed(fEvent.getSource()))
 			return;
 		float levelmath = ModConfig.enabled.subjectMathematics ?
-						  EnchantmentHelper.getEnchantmentLevel(Smc_040.Mathematics, dmgSource) : 0;
+						  EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.subjectMathematics, dmgSource) : 0;
 		float levelhistory =
-				ModConfig.enabled.subjectHistory ? EnchantmentHelper.getEnchantmentLevel(Smc_040.History, dmgSource) :
+				ModConfig.enabled.subjectHistory ? EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.subjectHistory, dmgSource) :
 				0;
 		float english =
-				ModConfig.enabled.subjectEnglish ? EnchantmentHelper.getEnchantmentLevel(Smc_040.English, dmgSource) :
+				ModConfig.enabled.subjectEnglish ? EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.subjectEnglish, dmgSource) :
 				0;
 		if(levelmath > 0) {
 			//System.out.println("Check");
 			float hp = fEvent.getEntityLiving().getMaxHealth() * (levelmath * 0.003125f);
 			float currentHp = fEvent.getEntityLiving().getHealth() * (0.025f * levelmath + 0.025f);
-			float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), hp + currentHp, 0.0f, 1.0f, attacker, Smc_040.Mathematics);
+			float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), hp + currentHp, 0.0f, 1.0f, attacker, EnchantmentRegistry.subjectMathematics);
 			fEvent.setAmount(FD);
 		}
 		if(levelhistory > 0) {
@@ -101,12 +100,12 @@ public class OtherHandler {
 			history /= 5;
 			history = history / (6 - levelhistory);
 			if(history >= 5 * (levelhistory * 0.5f)) history = 5 * (levelhistory * 0.5f);
-			float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), history, 0.0f, 1.0f, attacker, Smc_040.History);
+			float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), history, 0.0f, 1.0f, attacker, EnchantmentRegistry.subjectHistory);
 			fEvent.setAmount(FD);
 		}
 		if(english > 0) {
 			if(fEvent.getEntity() instanceof EntityWitch || fEvent.getEntity() instanceof EntityVillager || fEvent.getEntity() instanceof EntityWolf || fEvent.getEntity() instanceof EntitySnowman || fEvent.getEntity() instanceof EntityIronGolem || fEvent.getEntity() instanceof EntityPigZombie || fEvent.getEntity() instanceof EntityVindicator || fEvent.getEntity() instanceof EntityIllusionIllager || fEvent.getEntity() instanceof EntityEvoker) {
-				float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), 0.0f, 3.0f, 1.0f, attacker, Smc_040.English);
+				float FD = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), 0.0f, 3.0f, 1.0f, attacker, EnchantmentRegistry.subjectEnglish);
 				fEvent.setAmount(FD);
 				if(Math.random() <= 0.4f) fEvent.getEntityLiving().setSilent(true);
 			}

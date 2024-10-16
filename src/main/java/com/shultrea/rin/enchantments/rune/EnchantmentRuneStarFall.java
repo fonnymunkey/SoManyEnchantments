@@ -67,8 +67,8 @@ public class EnchantmentRuneStarFall extends Enchantment {
 			if(arrow.hasCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null)) {
 				IArrowProperties properties = arrow.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
 				{
-					if(EnchantmentHelper.getEnchantmentLevel(Smc_040.rune_starfall, bow) > 0) {
-						int l = EnchantmentHelper.getMaxEnchantmentLevel(Smc_040.rune_starfall, shooter);
+					if(EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.rune_starfall, bow) > 0) {
+						int l = EnchantmentHelper.getMaxEnchantmentLevel(EnchantmentRegistry.rune_starfall, shooter);
 						properties.setLevel(l);
 						properties.setDidStarFall(false);
 					}

@@ -4,7 +4,7 @@ import com.shultrea.rin.Interfaces.IEnchantmentRune;
 import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.Utility_Sector.EnchantmentsUtility;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
-import com.shultrea.rin.registry.Smc_030;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -77,7 +77,7 @@ public class EnchantmentRuneRevival extends EnchantmentBase implements IEnchantm
 		int amount = 0;
 		EntityPlayer entity = (EntityPlayer)fEvent.getEntityLiving();
 		ItemStack tool = fEvent.getOriginal();
-		int levelR = EnchantmentHelper.getEnchantmentLevel(Smc_030.Rune_Revival, tool);
+		int levelR = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.runeRevival, tool);
 		if(levelR <= 0) return;
 		if(levelR >= 3) levelR = 2;
 		int durability = tool.getMaxDamage();

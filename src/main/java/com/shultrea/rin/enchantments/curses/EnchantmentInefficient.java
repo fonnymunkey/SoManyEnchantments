@@ -2,7 +2,7 @@ package com.shultrea.rin.enchantments.curses;
 
 import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.enchantments.base.EnchantmentCurse;
-import com.shultrea.rin.enchantments.tier.EnchantmentAdvancedEfficiency;
+import com.shultrea.rin.enchantments.tool.EnchantmentAdvancedEfficiency;
 import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;

@@ -5,7 +5,7 @@ import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.Utility_Sector.EnchantmentsUtility;
 import com.shultrea.rin.Utility_Sector.UtilityAccessor;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
-import com.shultrea.rin.registry.Smc_020;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -78,19 +78,13 @@ public class EnchantmentRuneMagicalBlessing extends EnchantmentBase implements I
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void HandleEnchant(LivingHurtEvent fEvent) {
 		//System.out.println("Magical Blessing");
-		if(!fEvent.getSource().damageType.equals("player") && !fEvent.getSource().damageType.equals("mob")) return;
-		if(!(fEvent.getSource().getTrueSource() instanceof EntityLivingBase)) return;
+		if(!EnchantmentBase.isDamageSourceAllowed(fEvent.getSource())) return;
 		EntityLivingBase attacker = (EntityLivingBase)fEvent.getSource().getTrueSource();
-		if(attacker == null) return;
 		EntityLivingBase entity = (EntityLivingBase)fEvent.getEntity();
 		if(entity == null) return;
 		ItemStack stack = ((EntityLivingBase)fEvent.getSource().getTrueSource()).getHeldItemMainhand();
-		if(stack == null) return;
-		if(EnchantmentHelper.getEnchantmentLevel(this, stack) <= 0) return;
-		if(this.isOffensivePetDisallowed(fEvent.getSource().getImmediateSource(), fEvent.getSource().getTrueSource()))
-			return;
-		if(EnchantmentHelper.getEnchantmentLevel(Smc_010.Rune_PiercingCapabilities, stack) != 0) return;
-		int level = EnchantmentHelper.getEnchantmentLevel(Smc_020.Rune_MagicalBlessing, stack);
+		int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.runeMagicalBlessing, stack);
+		if(level != 0) return;
 		float LevelDamage = fEvent.getAmount();
 		fEvent.setAmount(fEvent.getAmount() - (fEvent.getAmount() * (level * 0.25f)));
 		LevelDamage = LevelDamage * (level * 0.25f);

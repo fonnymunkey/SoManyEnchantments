@@ -4,7 +4,7 @@ import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.Prop_Sector.IPlayerProperties;
 import com.shultrea.rin.Prop_Sector.PlayerPropertiesProvider;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
-import com.shultrea.rin.registry.Smc_040;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.entity.item.EntityItem;
@@ -81,7 +81,7 @@ public class EnchantmentRuneResurrection extends EnchantmentBase {
 		if(diedPlayer.world.isRemote) return;
 		List<ItemStack> list = diedPlayer.inventory.mainInventory;
 		for(int x = 0; x < list.size(); x++) {
-			level = EnchantmentHelper.getEnchantmentLevel(Smc_040.Rune_Resurrection, list.get(x));
+			level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.runeResurrection, list.get(x));
 			//System.out.println("OH IM GETTINT THE LEVEL. IT IS ->" + " " + level);
 			if(level > 0) {
 				if(diedPlayer.world.getWorldInfo().isHardcoreModeEnabled() || diedPlayer.posY < 0) {
@@ -228,10 +228,10 @@ public class EnchantmentRuneResurrection extends EnchantmentBase {
 			if(resurrect) p.setResurrecting(false);
 			if(resurrect && inv != null) {
 				if(!player.world.getGameRules().getBoolean("keepInventory")) {
-					if(EnchantmentHelper.getEnchantmentLevel(Smc_040.Rune_Resurrection, player.getHeldItemOffhand()) > 0)
+					if(EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.runeResurrection, player.getHeldItemOffhand()) > 0)
 						player.getHeldItemOffhand().shrink(1);
 					else for(int x = 0; x < list.size(); x++) {
-						int level = EnchantmentHelper.getEnchantmentLevel(Smc_040.Rune_Resurrection, list.get(x));
+						int level = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.runeResurrection, list.get(x));
 						if(level > 0) {
 							player.addStat(StatList.DEATHS, -1);
 							ItemStack stack = list.get(x);

@@ -70,7 +70,6 @@ public class EnchantmentRuneArrowPiercing extends EnchantmentBase implements IEn
 	public static void onLivingHurtEvent(LivingHurtEvent event) {
 		if(!EnchantmentBase.isDamageSourceAllowed(event.getSource())) return;
 		if(!(event.getSource().getImmediateSource() instanceof EntityArrow)) return;
-		if(!(event.getSource().getTrueSource() instanceof EntityLivingBase)) return;
 		EntityArrow arrow = (EntityArrow)event.getSource().getImmediateSource();
 		IArrowProperties cap = arrow.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
 		if(cap == null) return;

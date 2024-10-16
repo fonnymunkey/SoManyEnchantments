@@ -114,7 +114,7 @@ public class TreasureConfig {
 	public boolean luckMagnification = false;
 	@Config.Name("Luna's Blessing")
 	@Config.RequiresMcRestart
-	public boolean lunasBlessing = false;
+	public boolean lunarsBlessing = false;
 	@Config.Name("Magic Protection")
 	@Config.RequiresMcRestart
 	public boolean magicProtection = false;

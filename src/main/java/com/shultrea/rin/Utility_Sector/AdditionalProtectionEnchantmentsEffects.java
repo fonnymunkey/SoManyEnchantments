@@ -1,7 +1,7 @@
 package com.shultrea.rin.Utility_Sector;
 
 import com.shultrea.rin.Main_Sector.ModConfig;
-import com.shultrea.rin.registry.Smc_030;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -16,7 +16,7 @@ public class AdditionalProtectionEnchantmentsEffects {
 		//System.out.println("EVENT EEEEEEEEEEEEEEE");
 		if(!(ModConfig.enabled.advancedProtection)) return;
 		if(fEvent.getSource().damageType.equals("null")) return;
-		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(4.75f, Smc_030.AdvancedProtection, fEvent.getEntityLiving());
+		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(4.75f, EnchantmentRegistry.advancedProtection, fEvent.getEntityLiving());
 		float damage = EnchantmentsUtility.getDamageAfterMagicAbsorb(fEvent.getAmount(), modifier);
 		fEvent.setAmount(damage);
 	}
@@ -27,7 +27,7 @@ public class AdditionalProtectionEnchantmentsEffects {
 		//System.out.println("EVENT EEEEEEEEEEEEEEE");
 		if(!(ModConfig.enabled.advancedProjectileProtection)) return;
 		if(!(fEvent.getSource().isProjectile())) return;
-		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, Smc_030.AdvancedProjectileProtection, fEvent.getEntityLiving());
+		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, EnchantmentRegistry.advancedProjectileProtection, fEvent.getEntityLiving());
 		float damage = EnchantmentsUtility.getDamageAfterMagicAbsorb(fEvent.getAmount(), modifier);
 		fEvent.setAmount(damage);
 	}
@@ -38,7 +38,7 @@ public class AdditionalProtectionEnchantmentsEffects {
 		//System.out.println("EVENT EEEEEEEEEEEEEEE");
 		if(!(ModConfig.enabled.advancedFireProtection)) return;
 		if(!(fEvent.getSource().isFireDamage())) return;
-		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, Smc_030.AdvancedFireProtection, fEvent.getEntityLiving());
+		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, EnchantmentRegistry.advancedFireProtection, fEvent.getEntityLiving());
 		float damage = EnchantmentsUtility.getDamageAfterMagicAbsorb(fEvent.getAmount(), modifier);
 		fEvent.setAmount(damage);
 	}
@@ -49,7 +49,7 @@ public class AdditionalProtectionEnchantmentsEffects {
 		//System.out.println("EVENT EEEEEEEEEEEEEEE");
 		if(!(ModConfig.enabled.advancedBlastProtection)) return;
 		if(!(fEvent.getSource().isExplosion())) return;
-		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, Smc_030.AdvancedBlastProtection, fEvent.getEntityLiving());
+		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(7.5f, EnchantmentRegistry.advancedBlastProtection, fEvent.getEntityLiving());
 		float damage = EnchantmentsUtility.getDamageAfterMagicAbsorb(fEvent.getAmount(), modifier);
 		fEvent.setAmount(damage);
 	}
@@ -60,7 +60,7 @@ public class AdditionalProtectionEnchantmentsEffects {
 		//System.out.println("EVENT EEEEEEEEEEEEEEE");
 		if(!(ModConfig.enabled.advancedFeatherFalling)) return;
 		if((fEvent.getSource() != DamageSource.FALL)) return;
-		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(9, Smc_030.AdvancedFeatherFalling, fEvent.getEntityLiving());
+		int modifier = EnchantmentsUtility.CalcModgetTotalLevel(9, EnchantmentRegistry.advancedFeatherFalling, fEvent.getEntityLiving());
 		float damage = EnchantmentsUtility.getDamageAfterMagicAbsorb(fEvent.getAmount(), modifier);
 		fEvent.setAmount(damage);
 	}

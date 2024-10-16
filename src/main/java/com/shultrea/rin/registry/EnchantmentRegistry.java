@@ -4,10 +4,36 @@ import com.shultrea.rin.Enum.EnumList;
 import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.SoManyEnchantments;
 import com.shultrea.rin.enchantments.*;
+import com.shultrea.rin.enchantments.armor.protection.*;
+import com.shultrea.rin.enchantments.armor.thorns.EnchantmentAdvancedThorns;
+import com.shultrea.rin.enchantments.bow.*;
+import com.shultrea.rin.enchantments.fishing.EnchantmentAdvancedLuckOfTheSea;
+import com.shultrea.rin.enchantments.fishing.EnchantmentAdvancedLure;
+import com.shultrea.rin.enchantments.tool.EnchantmentAdvancedEfficiency;
+import com.shultrea.rin.enchantments.tool.EnchantmentQuarrying;
+import com.shultrea.rin.enchantments.tool.EnchantmentSmelter;
+import com.shultrea.rin.enchantments.weapon.*;
+import com.shultrea.rin.enchantments.weapon.ancient.EnchantmentAncientSealedCurses;
+import com.shultrea.rin.enchantments.weapon.ancient.EnchantmentAncientSwordMastery;
+import com.shultrea.rin.enchantments.armor.*;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
+import com.shultrea.rin.enchantments.weapon.conditionaldamage.EnchantmentDarkShadows;
+import com.shultrea.rin.enchantments.weapon.conditionaldamage.EnchantmentMortalitas;
+import com.shultrea.rin.enchantments.weapon.conditionaldamage.EnchantmentViper;
 import com.shultrea.rin.enchantments.curses.*;
+import com.shultrea.rin.enchantments.weapon.damage.*;
+import com.shultrea.rin.enchantments.weapon.damagemultiplier.*;
+import com.shultrea.rin.enchantments.hoe.EnchantmentJaggedRake;
+import com.shultrea.rin.enchantments.hoe.EnchantmentMoisturized;
+import com.shultrea.rin.enchantments.hoe.EnchantmentPlowing;
+import com.shultrea.rin.enchantments.weapon.potiondebuffer.*;
 import com.shultrea.rin.enchantments.rune.*;
-import com.shultrea.rin.enchantments.tier.*;
+import com.shultrea.rin.enchantments.shield.EnchantmentBurningShield;
+import com.shultrea.rin.enchantments.shield.EnchantmentEmpoweredDefence;
+import com.shultrea.rin.enchantments.shield.EnchantmentNaturalBlocking;
+import com.shultrea.rin.enchantments.armor.thorns.EnchantmentBurningThorns;
+import com.shultrea.rin.enchantments.weapon.subject.EnchantmentSubjectEnchantments;
+import com.shultrea.rin.enchantments.weapon.weather.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraftforge.common.MinecraftForge;
@@ -62,7 +88,7 @@ public class EnchantmentRegistry {
 	public static EnchantmentBase lifesteal = register(new EnchantmentLifesteal("lifesteal", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
 	public static EnchantmentBase lightWeight = register(new EnchantmentLightWeight("lightweight", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR_FEET));
 	public static EnchantmentBase luckMagnification = register(new EnchantmentLuckMagnification("luckmagnification", Enchantment.Rarity.RARE, EnumList.COMBAT));
-	public static EnchantmentBase lunasBlessing = register(new EnchantmentLunasBlessing("lunasblessing", Enchantment.Rarity.RARE, EnumList.SWORD));
+	public static EnchantmentBase lunarsBlessing = register(new EnchantmentLunarsBlessing("lunarsblessing", Enchantment.Rarity.RARE, EnumList.SWORD));
 	public static EnchantmentBase magicProtection = register(new EnchantmentMagicProtection("magicprotection", Enchantment.Rarity.UNCOMMON, EnumEnchantmentType.ARMOR));
 	public static EnchantmentBase magmaWalker = register(new EnchantmentMagmaWalker("magmawalker", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_FEET));
 	public static EnchantmentBase meltdown = register(new EnchantmentMeltdown("meltdown", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ARMOR_CHEST));
@@ -96,7 +122,7 @@ public class EnchantmentRegistry {
 	public static EnchantmentBase upgradedPotentials = register(new EnchantmentUpgradedPotentials("upgradedpotentials", Enchantment.Rarity.RARE, EnumList.NONE));
 	public static EnchantmentBase viper = register(new EnchantmentViper("viper", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
 	public static EnchantmentBase waterAspect = register(new EnchantmentWaterAspect("wateraspect", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
-	public static EnchantmentBase wellTilled = register(new EnchantmentWellTilled("welltilled", Enchantment.Rarity.RARE, EnumList.HOE));
+	public static EnchantmentBase plowing = register(new EnchantmentPlowing("plowing", Enchantment.Rarity.RARE, EnumList.HOE));
 	public static EnchantmentBase wintersGrace = register(new EnchantmentWintersGrace("wintersgrace", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.WEAPON));
 	
 	//Curses
@@ -123,21 +149,22 @@ public class EnchantmentRegistry {
 	//public static EnchantmentBase runeStarfall;
 	
 	//Subject
-	public static EnchantmentBase subjectEnglish;
-	public static EnchantmentBase subjectHistory;
-	public static EnchantmentBase subjectMathematics;
-	public static EnchantmentBase subjectPE;
-	//public static Enchantment subjectPhysics;
-	public static EnchantmentBase subjectScience;
-	
+	public static EnchantmentBase subjectMathematics = register(new EnchantmentSubjectEnchantments("subjectmathematics",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,0));
+	public static EnchantmentBase subjectScience = register(new EnchantmentSubjectEnchantments("subjectscience",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,1));
+	public static EnchantmentBase subjectHistory = register(new EnchantmentSubjectEnchantments("subjecthistory",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,2));
+	//public static Enchantment subjectPhysics = register(new EnchantmentSubjectEnchantments("subjectphysics",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,3));
+	public static EnchantmentBase subjectEnglish = register(new EnchantmentSubjectEnchantments("subjectenglish",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,4));
+	public static EnchantmentBase subjectPE = register(new EnchantmentSubjectEnchantments("subjectpe",Enchantment.Rarity.VERY_RARE,EnumList.SWORD,5));
+
 	//Lesser
-	public static EnchantmentBase lesserBaneOfArthropods;
+	public static EnchantmentBase lesserBaneOfArthropods = register(new EnchantmentTierDamage("lesserbaneofarthropods", Enchantment.Rarity.COMMON,EnumEnchantmentType.WEAPON,4));
 	//public static EnchantmentBase lesserBlastProtection;
 	//public static EnchantmentBase lesserEfficiency;
 	//public static EnchantmentBase lesserFeatherFalling;
-	public static EnchantmentBase lesserFireAspect;
+	public static EnchantmentBase lesserFireAspect = register(new EnchantmentTierFA("lesserfireaspect", Enchantment.Rarity.COMMON,EnumEnchantmentType.WEAPON,0));
 	//public static EnchantmentBase lesserFireProtection;
-	public static EnchantmentBase lesserFlame;
+	//TODO, Nischhelm: why is this and the other Flame tiers WEAPON and not BOW? How does that even work in game? Vanilla Flame got BOW
+	public static EnchantmentBase lesserFlame = register(new EnchantmentTierFlame("lesserflame", Enchantment.Rarity.COMMON,EnumEnchantmentType.WEAPON,0));
 	//public static EnchantmentBase lesserFortune;
 	//public static EnchantmentBase lesserKnockback;
 	//public static EnchantmentBase lesserLooting;
@@ -148,53 +175,54 @@ public class EnchantmentRegistry {
 	//public static EnchantmentBase lesserProjectileProtection;
 	//public static EnchantmentBase lesserProtection;
 	//public static EnchantmentBase lesserPunch;
-	//public static EnchantmentBase lesserRepiration;
-	public static EnchantmentBase lesserSharpness;
-	public static EnchantmentBase lesserSmite;
+	//public static EnchantmentBase lesserRespiration;
+	public static EnchantmentBase lesserSharpness = register(new EnchantmentTierDamage("lessersharpness", Enchantment.Rarity.COMMON,EnumEnchantmentType.WEAPON,0));
+	public static EnchantmentBase lesserSmite = register(new EnchantmentTierDamage("lessermite", Enchantment.Rarity.COMMON,EnumEnchantmentType.WEAPON,2));
 	//public static EnchantmentBase lesserThorns;
+
 	//Advanced
-	public static EnchantmentBase advancedBaneOfArthropods = register(new EnchantmentAdvancedBaneOfArthropods("advancedbaneofarthropods", Enchantment.Rarity.RARE, false, false, EnumEnchantmentType.WEAPON));
-	public static EnchantmentBase advancedBlastProtection;
-	public static EnchantmentBase advancedEfficiency = register(new EnchantmentAdvancedEfficiency("advancedefficiency", Enchantment.Rarity.RARE, false, false, EnumEnchantmentType.DIGGER));
-	public static EnchantmentBase advancedFeatherFalling;
-	public static EnchantmentBase advancedFireAspect;
-	public static EnchantmentBase advancedFireProtection;
-	public static EnchantmentBase advancedFlame;
+	public static EnchantmentBase advancedBaneOfArthropods = register(new EnchantmentAdvancedBaneOfArthropods("advancedbaneofarthropods", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
+	public static EnchantmentBase advancedBlastProtection = register(new EnchantmentAdvancedBlastProtection("advancedblastprotection", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR));
+	public static EnchantmentBase advancedEfficiency = register(new EnchantmentAdvancedEfficiency("advancedefficiency", Enchantment.Rarity.RARE, EnumEnchantmentType.DIGGER));
+	public static EnchantmentBase advancedFeatherFalling = register(new EnchantmentAdvancedFeatherFalling("advancedfeatherfalling", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.ARMOR_FEET));
+	public static EnchantmentBase advancedFireAspect = register(new EnchantmentTierFA("advancedfireaspect", Enchantment.Rarity.RARE,EnumEnchantmentType.WEAPON,1));
+	public static EnchantmentBase advancedFireProtection = register(new EnchantmentAdvancedFireProtection("advancedfireprotection", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ARMOR));
+	public static EnchantmentBase advancedFlame = register(new EnchantmentTierFlame("advancedflame", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,1));
 	//public static EnchantmentBase advancedFortune;
-	public static EnchantmentBase advancedKnockback;
-	public static EnchantmentBase advancedLooting;
-	public static EnchantmentBase advancedLuckOfTheSea;
-	public static EnchantmentBase advancedLure;
-	public static EnchantmentBase advancedMending;
-	public static EnchantmentBase advancedPower;
-	public static EnchantmentBase advancedProjectileProtection;
-	public static EnchantmentBase advancedProtection;
-	public static EnchantmentBase advancedPunch;
+	public static EnchantmentBase advancedKnockback = register(new EnchantmentAdvancedKnockback("advancedknockback", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON));
+	public static EnchantmentBase advancedLooting = register(new EnchantmentAdvancedLooting("advancedlooting", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON));
+	public static EnchantmentBase advancedLuckOfTheSea = register(new EnchantmentAdvancedLuckOfTheSea("advancedluckofthesea",Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.FISHING_ROD));
+	public static EnchantmentBase advancedLure = register(new EnchantmentAdvancedLure("advancedlure", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.FISHING_ROD));
+	public static EnchantmentBase advancedMending = register(new EnchantmentAdvancedMending("advancedmending", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.BREAKABLE));
+	public static EnchantmentBase advancedPower = register(new EnchantmentAdvancedPower("advancedpower", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.BOW));
+	public static EnchantmentBase advancedProjectileProtection = register(new EnchantmentAdvancedProjectileProtection("advancedprojectileprotection", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR));
+	public static EnchantmentBase advancedProtection = register(new EnchantmentAdvancedProtection("advancedprotection", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.ARMOR));
+	public static EnchantmentBase advancedPunch = register(new EnchantmentAdvancedPunch("advancedpunch", Enchantment.Rarity.VERY_RARE, EnumEnchantmentType.BOW));
 	//public static EnchantmentBase advancedRespiration;
-	public static EnchantmentBase advancedSharpness = register(new EnchantmentAdvancedSharpness("advancedsharpness", Enchantment.Rarity.RARE, false, false, EnumEnchantmentType.WEAPON));
-	public static EnchantmentBase advancedSmite = register(new EnchantmentAdvancedSmite("advancedsmite", Enchantment.Rarity.RARE, false, false, EnumEnchantmentType.WEAPON));
-	public static EnchantmentBase advancedThorns;
+	public static EnchantmentBase advancedSharpness = register(new EnchantmentAdvancedSharpness("advancedsharpness", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
+	public static EnchantmentBase advancedSmite = register(new EnchantmentAdvancedSmite("advancedsmite", Enchantment.Rarity.RARE, EnumEnchantmentType.WEAPON));
+	public static EnchantmentBase advancedThorns = register(new EnchantmentAdvancedThorns("advancedthorns", Enchantment.Rarity.RARE, EnumEnchantmentType.ARMOR));
 	//Supreme
-	public static EnchantmentBase supremeBaneOfArthropods;
+	public static EnchantmentBase supremeBaneOfArthropods = register(new EnchantmentTierDamage("supremebaneofarthropods", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,5));
 	//public static EnchantmentBase supremeBlastProtection;
 	//public static EnchantmentBase supremeEfficiency;
 	//public static EnchantmentBase supremeFeatherFalling;
-	public static EnchantmentBase supremeFireAspect;
+	public static EnchantmentBase supremeFireAspect = register(new EnchantmentTierFA("supremefireaspect", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,2));
 	//public static EnchantmentBase supremeFireProtection;
-	public static EnchantmentBase supremeFlame;
+	public static EnchantmentBase supremeFlame = register(new EnchantmentTierFlame("supremeflame", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,2));
 	//public static EnchantmentBase supremeFortune;
-	public static EnchantmentBase supremeKnockback;
-	public static EnchantmentBase supremeLooting;
+	//public static EnchantmentBase supremeKnockback;
+	//public static EnchantmentBase supremeLooting;
 	//public static EnchantmentBase supremeLuckOfTheSea;
 	//public static EnchantmentBase supremeLure;
-	public static EnchantmentBase supremeMending;
-	public static EnchantmentBase supremePower;
+	//public static EnchantmentBase supremeMending;
+	//public static EnchantmentBase supremePower;
 	//public static EnchantmentBase supremeProjectileProtection;
 	//public static EnchantmentBase supremeProtection;
-	public static EnchantmentBase supremePunch;
-	public static EnchantmentBase supremeRespiration;
-	public static EnchantmentBase supremeSharpness;
-	public static EnchantmentBase supremeSmite;
+	//public static EnchantmentBase supremePunch;
+	//public static EnchantmentBase supremeRespiration;
+	public static EnchantmentBase supremeSharpness = register(new EnchantmentTierDamage("supremesharpness", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,1));
+	public static EnchantmentBase supremeSmite = register(new EnchantmentTierDamage("supremesmite", Enchantment.Rarity.VERY_RARE,EnumEnchantmentType.WEAPON,3));;
 	//public static EnchantmentBase supremeThorns;
 	
 	private static EnchantmentBase register(EnchantmentBase enchantment) {

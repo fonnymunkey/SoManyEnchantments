@@ -2,7 +2,7 @@ package com.shultrea.rin.enchantments;
 
 import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.enchantments.base.EnchantmentBase;
-import com.shultrea.rin.registry.Smc_030;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnumEnchantmentType;
@@ -61,7 +61,7 @@ public class EnchantmentAdept extends EnchantmentBase {
 	//TODO
 	@Override
 	public boolean canApplyTogether(Enchantment fTest) {
-		return super.canApplyTogether(fTest) && fTest != Enchantments.LOOTING && fTest != Smc_030.AdvancedLooting;
+		return super.canApplyTogether(fTest) && fTest != Enchantments.LOOTING && fTest != EnchantmentRegistry.advancedLooting;
 	}
 	
 	//TODO

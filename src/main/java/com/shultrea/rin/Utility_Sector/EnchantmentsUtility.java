@@ -3,7 +3,7 @@ package com.shultrea.rin.Utility_Sector;
 import com.google.common.collect.Lists;
 import com.shultrea.rin.Main_Sector.ModConfig;
 import com.shultrea.rin.SoManyEnchantments;
-import com.shultrea.rin.registry.Smc_030;
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.crash.ICrashReportDetail;
@@ -277,7 +277,7 @@ public class EnchantmentsUtility {
 	
 	public static double getAdvancedKnockBackReduction(EntityLivingBase entityLivingBaseIn) {
 		double digit = 0;
-		int i = EnchantmentHelper.getMaxEnchantmentLevel(Smc_030.AdvancedBlastProtection, entityLivingBaseIn);
+		int i = EnchantmentHelper.getMaxEnchantmentLevel(EnchantmentRegistry.advancedBlastProtection, entityLivingBaseIn);
 		if(i > 0) {
 			digit = 0.95 - (i / 5 + (0));
 		}

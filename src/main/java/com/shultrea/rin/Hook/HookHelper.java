@@ -1,9 +1,9 @@
 package com.shultrea.rin.Hook;
 
-import com.shultrea.rin.enchantments.tier.EnchantmentAdvancedBlastProtection;
-import com.shultrea.rin.enchantments.tier.EnchantmentAdvancedLooting;
-import com.shultrea.rin.enchantments.tier.EnchantmentAdvancedLuckOfTheSea;
-import com.shultrea.rin.enchantments.tier.EnchantmentAdvancedLure;
+import com.shultrea.rin.enchantments.armor.protection.EnchantmentAdvancedBlastProtection;
+import com.shultrea.rin.enchantments.weapon.EnchantmentAdvancedLooting;
+import com.shultrea.rin.enchantments.fishing.EnchantmentAdvancedLuckOfTheSea;
+import com.shultrea.rin.enchantments.fishing.EnchantmentAdvancedLure;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 

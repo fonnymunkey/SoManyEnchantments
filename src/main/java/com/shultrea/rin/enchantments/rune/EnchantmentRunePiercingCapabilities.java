@@ -72,14 +72,13 @@ public class EnchantmentRunePiercingCapabilities extends EnchantmentBase impleme
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void HandleEnchant(LivingHurtEvent fEvent) {
 		//System.out.println("Piercing Capabilities");
-		if(!(EnchantmentsUtility.checkEventCondition(fEvent, this))) return;
+		if(!EnchantmentBase.isDamageSourceAllowed(fEvent.getSource()))
+			return;
 		if(fEvent.getSource().isUnblockable()) return;
 		EntityLivingBase attacker = (EntityLivingBase)fEvent.getSource().getTrueSource();
-		ItemStack dmgSource = attacker.getHeldItemMainhand();
-		int pierceLevel = EnchantmentHelper.getEnchantmentLevel(this, dmgSource);
+		ItemStack stack = attacker.getHeldItemMainhand();
+		int pierceLevel = EnchantmentHelper.getEnchantmentLevel(this, stack);
 		if(pierceLevel <= 0) return;
-		if(this.isOffensivePetDisallowed(fEvent.getSource().getImmediateSource(), fEvent.getSource().getTrueSource()))
-			return;
 		float damage = fEvent.getAmount() * 0.25f * pierceLevel;
 		fEvent.setAmount(fEvent.getAmount() - (fEvent.getAmount() * pierceLevel * 0.25f));
 		if(attacker instanceof EntityPlayer)

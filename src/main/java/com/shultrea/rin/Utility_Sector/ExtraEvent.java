@@ -17,7 +17,7 @@ public class ExtraEvent {
 		if(!(fEvent.getSource().getImmediateSource() instanceof EntityArrow)) return;
 		EntityArrow cause = (EntityArrow)fEvent.getSource().getImmediateSource();
 		if(!cause.hasCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null)) return;
-		if(EnchantmentBase.isOffensivePetDisallowed(fEvent.getSource().getImmediateSource(), fEvent.getSource().getTrueSource()))
+		if(!EnchantmentBase.isDamageSourceAllowed(fEvent.getSource()))
 			return;
 		IArrowProperties properties = cause.getCapability(ArrowPropertiesProvider.ARROWPROPERTIES_CAP, null);
 		int flameLevel = properties.getFlameLevel();
@@ -35,7 +35,7 @@ public class ExtraEvent {
 				break;
 		}
 		float pullPower = properties.getPullPower();
-		if(pullPower > 0 && ModConfig.enabled.dragging) {
+		if(pullPower > 0 && ModConfig.enabled.drag) {
 			pullPower *= -1;
 			float distance = MathHelper.sqrt(cause.motionX * cause.motionX + cause.motionZ * cause.motionZ);
 			fEvent.getEntityLiving().addVelocity(cause.motionX * pullPower * 0.6000000238418579D / (double)distance, 0.1D, cause.motionZ * pullPower * 0.6000000238418579D / (double)distance);

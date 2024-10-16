@@ -1,6 +1,6 @@
 package com.shultrea.rin.Utility_Sector;
-
-import com.shultrea.rin.registry.Smc_040;
+/*
+import com.shultrea.rin.registry.EnchantmentRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -18,13 +18,13 @@ public class RespirationUtil {
 			float f12 = 0.0F;
 			if(entity instanceof net.minecraft.entity.EntityLivingBase) {
 				net.minecraft.entity.EntityLivingBase ent = (net.minecraft.entity.EntityLivingBase)entity;
-				f12 = (float)net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel(Smc_040.AdvancedRespiration, ent) * 0.4F;
+				f12 = (float)net.minecraft.enchantment.EnchantmentHelper.getMaxEnchantmentLevel(EnchantmentRegistry.advancedRespiration, ent) * 0.4F;
 				/**if (ent.isPotionActive(net.minecraft.init.MobEffects.WATER_BREATHING))
 				 {
 				 f12 = f12 * 0.3F + 0.6F;
 				 }
 				 */
-			}
+/*			}
 			return new Vec3d(0.02F + f12, 0.02F + f12, 0.2F + f12);
 		}
 		else if(state.getMaterial() == Material.LAVA) {
@@ -33,3 +33,4 @@ public class RespirationUtil {
 		return originalColor;
 	}
 }
+*/

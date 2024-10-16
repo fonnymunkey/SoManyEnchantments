@@ -142,9 +142,9 @@ public class EnchantmentDebug extends Enchantment
 		if(dmgSource == null)
 			return;
 		
-		int levelCleave = EnchantmentHelper.getEnchantmentLevel(Smc_030.Debug, dmgSource);
+		int levelCleave = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.Debug, dmgSource);
 		
-		if(EnchantmentHelper.getEnchantmentLevel(Smc_030.Debug, dmgSource) <= 0)
+		if(EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.Debug, dmgSource) <= 0)
 			return;
 		
 		*/
@@ -254,9 +254,9 @@ public class EnchantmentDebug extends Enchantment
 		if(dmgSource == null)
 			return;
 		
-		if(EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, dmgSource) <= 0)
+		if(EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.CriticalStrike, dmgSource) <= 0)
 			return;
-		int levelcriticalStrike = EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, dmgSource);
+		int levelcriticalStrike = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.CriticalStrike, dmgSource);
 			
 		if(!dmgSource.hasTagCompound())
 			dmgSource.setTagCompound(new NBTTagCompound());
@@ -308,13 +308,13 @@ public class EnchantmentDebug extends Enchantment
 		if(dmgSource == null)
 			return;
 		
-		if(EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, dmgSource) <= 0)
+		if(EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.CriticalStrike, dmgSource) <= 0)
 			return;
-		int levelcriticalStrike = EnchantmentHelper.getEnchantmentLevel(Smc_030.CriticalStrike, dmgSource);
+		int levelcriticalStrike = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.CriticalStrike, dmgSource);
     
 		if(Chance.equals("Critical!")){
 		
-			float FDamage = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), 0.0f, 0.00f, 1.2f + (levelcriticalStrike * 0.2f), attacker, Smc_030.CriticalStrike);
+			float FDamage = EnchantmentsUtility.CalculateDamageIgnoreSwipe(fEvent.getAmount(), 0.0f, 0.00f, 1.2f + (levelcriticalStrike * 0.2f), attacker, EnchantmentRegistry.CriticalStrike);
 		    fEvent.setAmount(FDamage);
 		
 		double X = fEvent.getEntity().posX;
