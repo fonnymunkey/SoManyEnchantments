@@ -70,8 +70,7 @@ public class EnchantmentInefficient extends EnchantmentCurse {
 		int level = EnchantmentHelper.getEnchantmentLevel(this, stack);
 		if(level > 0) {
 			if(stack.canHarvestBlock(event.getState()) || ForgeHooks.isToolEffective(player.world, event.getPos(), stack)) {
-				float speed = (float)level * 0.65F + 2.0F;
-				event.setNewSpeed((event.getNewSpeed() / speed) - (0.15F * level));
+				event.setNewSpeed(event.getNewSpeed() / (level*level+1.F));
 			}
 		}
 	}

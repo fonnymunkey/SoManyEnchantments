@@ -8,6 +8,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.MathHelper;
 
 /**
  * Enchantment handled in com.shultrea.rin.mixin.vanilla.EnchantmentHelperMixin
@@ -24,7 +25,7 @@ public class EnchantmentAdvancedEfficiency extends EnchantmentBase {
 		ItemStack stack = entity.getHeldItemMainhand();
 		int levelEfficiency = EnchantmentHelper.getEnchantmentLevel(EnchantmentRegistry.advancedEfficiency, stack);
 		if(levelEfficiency <= 0) return 0;
-		return original + levelEfficiency * 3;
+		return original + MathHelper.floor(levelEfficiency * 2.5f);
 	}
 	
 	@Override

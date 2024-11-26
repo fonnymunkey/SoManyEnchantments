@@ -2,14 +2,14 @@ package com.shultrea.rin.enchantments.bow;
 
 import com.shultrea.rin.config.EnchantabilityConfig;
 import com.shultrea.rin.config.ModConfig;
-import com.shultrea.rin.enchantments.base.EnchantmentBase;
+import com.shultrea.rin.enchantments.base.EnchantmentCurse;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 /**
  * Enchantment handling in com.shultrea.rin.properties.ArrowPropertiesHandler
  */
-public class EnchantmentDragging extends EnchantmentBase {
+public class EnchantmentDragging extends EnchantmentCurse {
 	
 	public EnchantmentDragging(String name, Rarity rarity, EntityEquipmentSlot... slots) {
 		super(name, rarity, slots);

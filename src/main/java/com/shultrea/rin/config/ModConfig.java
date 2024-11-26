@@ -37,12 +37,16 @@ public class ModConfig {
 	public static RarityConfig rarity = new RarityConfig();
 	
 	@Config.Comment("Types of items each enchantment can apply on at enchantment table and anvil. Available types: ALL_TYPES (=any of the following types), ARMOR, ARMOR_HEAD, ARMOR_CHEST, ARMOR_LEGS, ARMOR_FEET, SWORD, TOOL, FISHING_ROD, BREAKABLE, BOW, WEARABLE, ALL_ITEMS (=any Item), AXE, PICKAXE, HOE, SHOVEL, GAPPLE, SHIELD, NONE")
-	@Config.Name("CanApply")
+	@Config.Name("Can apply on enchantment table and anvil")
 	public static CanApplyConfig canApply = new CanApplyConfig();
 	
 	@Config.Comment("Additional types of items each enchantment can apply on at the anvil. To be able to use miscellaneous.canCursesBeAppliedAtEnchantingTable=false, all valid types of curses have to be named here, not just the additional ones")
-	@Config.Name("CanApplyAnvil")
+	@Config.Name("Can apply additionally on anvil")
 	public static CanApplyAnvilConfig canApplyAnvil = new CanApplyAnvilConfig();
+
+	@Config.Comment("Config for upgrading tiered enchantments")
+	@Config.Name("Upgrade")
+	public static UpgradeConfig upgrade = new UpgradeConfig();
 	
 	@Config.Comment("Miscellaneous")
 	@Config.Name("Miscellaneous")
@@ -57,10 +61,6 @@ public class ModConfig {
 		@Config.Comment("Enables a bug that doubles xp orbs when picked up, present from older versions")
 		@Config.Name("Retain Double XP Orbs Bug")
 		public boolean enableDoubleXPBug = false;
-		
-		@Config.Comment("Fixes a bug that allows for enchantment effects to still trigger when the initial attack is 0 (Such as while having weakness)")
-		@Config.Name("Fix Weak Attack Effects")
-		public boolean fixWeakAttackEffects = false;
 		
 		@Config.Comment("Evasion makes the player perform a dodge, disable if you want potentially dangerous forced dodges")
 		@Config.Name("Evasion Dodge Effect")
@@ -113,6 +113,48 @@ public class ModConfig {
 		@Config.Comment("If Advanced Mending should prioritize repairing damaged items")
 		@Config.Name("Advanced Mending Prioritize Damaged Items")
 		public boolean advancedMendingPrioritizeDamaged = true;
+
+		@Config.Comment("Randomly enchanted loot, enchanting table and librarians will not be able to generate enchantments in this list")
+		@Config.Name("Enchantment Blacklist")
+		public String[] blacklistedEnchants = {
+				"lesserbaneofarthropods",
+				"lesserfireaspect",
+				"lesserflame",
+				"lessersharpness",
+				"lessersmite",
+				"advancedbaneofarthropods",
+				"advancedblastprotection",
+				"advancedefficiency",
+				"advancedfeatherfalling",
+				"advancedfireaspect",
+				"advancedfireprotection",
+				"advancedflame",
+				"advancedknockback",
+				"advancedlooting",
+				"advancedluckofthesea",
+				"advancedlure",
+				"advancedmending",
+				"advancedpower",
+				"advancedprojectileprotection",
+				"advancedprotection",
+				"advancedpunch",
+				"advancedsharpness",
+				"advancedsmite",
+				"advancedthorns",
+				"supremebaneofarthropods",
+				"supremefireaspect",
+				"supremeflame",
+				"supremesharpness",
+				"supremesmite"
+		};
+
+		@Config.Comment("Enchantment blacklist will be treated as a Whitelist")
+		@Config.Name("Enchantment Whitelist Toggle")
+		public boolean blacklistedEnchantsIsWhitelist = false;
+
+		@Config.Comment("If set to true, remove anvil repair cost increase when combining two single enchant books with the same lvl (Prot 3 + Prot 3)")
+		@Config.Name("Remove book combination anvil cost increase")
+		public boolean removeBookCombinationAnvilCost = false;
 	}
 	
 	@Mod.EventBusSubscriber(modid = SoManyEnchantments.MODID)

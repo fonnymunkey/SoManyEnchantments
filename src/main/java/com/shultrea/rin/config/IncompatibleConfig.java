@@ -19,10 +19,8 @@ public class IncompatibleConfig {
 			"heavyweight, swifterslashes",
 			"minecraft:unbreaking, rusted",
 			"minecraft:unbreaking, instability",
-			"minecraft:sweeping, arcslash",
-			"minecraft:sweeping, ancientswordmastery",
+			"minecraft:sweeping, arcslash, ancientswordmastery",
 			"minecraft:silk_touch, smelter",
-			"minecraft:silk_touch, minecraft:fortune",
 			"minecraft:luck_of_the_sea, advancedluckofthesea",
 			"minecraft:lure, advancedlure",
 			"minecraft:mending, advancedmending, minecraft:infinity",
@@ -53,7 +51,8 @@ public class IncompatibleConfig {
 			"advancedsharpness, advancedsmite, advancedbaneofarthropods, supremesharpness, supremesmite, supremebaneofarthropods, spellbreaker",
 			"defusingedge, inhumane, butchering",
 			"splitshot, mujmajnkraftsbettersurvival:multishot",
-			"adept, mujmajnkraftsbettersurvival:education"};
+			"adept, mujmajnkraftsbettersurvival:education"
+	};
 
 	public ArrayList<Enchantment> getIncompatibleEnchantmentsString(Enchantment thisEnch) {
 		ArrayList<Enchantment> incompatEnchs = new ArrayList<>();

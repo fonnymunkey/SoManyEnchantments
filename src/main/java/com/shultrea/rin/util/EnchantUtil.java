@@ -8,12 +8,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -163,5 +165,12 @@ public abstract class EnchantUtil {
 			damage -= level * 0.25F + 1.0F;
 		}
 		return damage;
+	}
+
+	public static boolean isNonBlackListedEnchant(ResourceLocation chosenEnchant) {
+		String enchantName = chosenEnchant.toString();
+		if(!enchantName.contains(":")) enchantName = "somanyenchantments:"+enchantName;
+		boolean isInList = Arrays.asList(ModConfig.miscellaneous.blacklistedEnchants).contains(enchantName);
+		return isInList == ModConfig.miscellaneous.blacklistedEnchantsIsWhitelist;
 	}
 }
